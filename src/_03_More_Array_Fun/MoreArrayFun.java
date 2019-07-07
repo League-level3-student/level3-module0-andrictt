@@ -48,14 +48,22 @@ public class MoreArrayFun {
 	
 	public static void printRand(String[] arr) {
 		Random rand = new Random();
-		int[] compare = new int[arr.length + 1];
-		int derp;
-		for(int i = 0; i < arr.length; i ++) {
-			derp = rand.nextInt(arr.length);
-			if(compare[i] != derp) {
-				compare[i+1] = derp;
-				System.out.print(arr[derp] + " ");
-			}
+		int derp = arr.length;
+		int[] compare = new int[arr.length];
+		int temp;
+		
+		int ree;
+		for(int i = 0; i < arr.length;i ++) {
+			compare[i] = i;
+		}
+		for(int i = 0; i < arr.length; i++) {
+			ree = rand.nextInt(arr.length);
+			temp = compare[derp - i - 1];
+			compare[derp - i - 1] = compare[ree];
+			compare[ree] = temp;
+		}
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print(arr[compare[i]] + " ");
 		}
 	}
 }
